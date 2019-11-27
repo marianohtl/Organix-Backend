@@ -25,9 +25,9 @@ namespace Backend.Controllers
         // GET : api/Oferta
          // GET : api/Oferta
         /// <summary>
-        /// Consultar uma oferta 
+        ///  Busca uma lista de ofertas cadastradas
         /// </summary>
-        /// <returns>Retorna uma oferta valida</returns>
+        /// <returns>Retorna uma lista de ofertas</returns>
         [Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Oferta>>> Get(){
@@ -44,9 +44,9 @@ namespace Backend.Controllers
         // GET : api/Oferta2
         // GET : api/Oferta2
         /// <summary>
-        /// Consultar uma oferta pelo ID
+        /// Consulta uma oferta pelo ID
         /// </summary>
-        /// <returns>Retorna uma oferta valida</returns>
+        /// <returns>Retorna uma oferta válida</returns>
         [Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Oferta>> Get(int id){
@@ -63,12 +63,11 @@ namespace Backend.Controllers
         }
 
         // POST api/Oferta
-          // POST api/Oferta
-        /// <summary>
-        /// Atualiza uma oferta
-        /// </summary>
-        /// <returns>Envia para o banco, o valor cadastrado</returns>
-   
+        // POST api/Oferta
+        ///<summary>
+        ///Cria uma nova oferta
+        ///</summary>
+        ///<returns>Envia para o banco o valor cadastrado</returns>
         [Authorize(Roles="1,2")]
         [HttpPost]
         public async Task<ActionResult<Oferta>> Post(Oferta oferta){
@@ -86,9 +85,9 @@ namespace Backend.Controllers
             return oferta;
         }
            /// <summary>
-        /// Cadastrada uma oferta baseado no ID
+        /// Altera uma oferta cadastrada baseado no ID
         /// </summary>
-        /// <returns>Envia para o banco, o valor cadastrado</returns>
+        /// <returns>Envia para o banco o valor alterado</returns>
         [Authorize(Roles="1,2")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Oferta oferta){
@@ -124,7 +123,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Deleta uma oferta
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Deleta uma oferta cadastrada</returns>
         [Authorize(Roles="1,2")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Oferta>> Delete(int id){

@@ -24,9 +24,9 @@ namespace Backend.Controllers
 
         // GET : api/Produto
         /// <summary>
-        /// Consuta produto
+        /// Consuta uma lista de produtos cadastrados
         /// </summary>
-        /// <returns>Retorna um produto valido</returns>
+        /// <returns>Retorna uma lista de produtos</returns>
         [Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> Get(){
@@ -45,7 +45,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Consulta produto baseado no ID
         /// </summary>
-        /// <returns>Retorna um produto valido</returns>
+        /// <returns>Retorna um produto </returns>
         [Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> Get(int id){
@@ -62,9 +62,9 @@ namespace Backend.Controllers
 
         // POST api/Produto
         /// <summary>
-        /// Atualiza produto
+        /// Cadastra um novo produto pelo usuário administrador
         /// </summary>
-        /// <returns>Envia para o banco se valido</returns>
+        /// <returns>Cadastra um novo produto</returns>
         [Authorize(Roles="1")]
         [HttpPost]
         public async Task<ActionResult<Produto>> Post([FromForm]Produto produto){
@@ -76,9 +76,9 @@ namespace Backend.Controllers
             return produto;
         }
         /// <summary>
-        /// Cadastra produto baseado pelo ID
+        /// Altera produto baseado no ID
         /// </summary>
-        /// <returns>Envia para o banco se valido</returns>
+        /// <returns>Envia alteração do produto no banco </returns>
         [Authorize(Roles="1")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id,[FromForm]Produto produto){
@@ -115,7 +115,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Deleta produto
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Deleta o produto no banco</returns>
         [Authorize(Roles="1")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Produto>> Delete(int id){

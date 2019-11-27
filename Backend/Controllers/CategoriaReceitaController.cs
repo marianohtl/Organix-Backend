@@ -19,9 +19,9 @@ namespace Backend.Controllers
 
         // GET : api/CategoriaReceita
         /// <summary>
-        /// Busca a categoria selecionada 
+        /// Busca todas as categorias de receitas cadastradas 
         /// </summary>
-        /// <returns>Retorna uma categoria valida</returns>
+        /// <returns>Retorna uma lista de categorias de receitas</returns>
         [Authorize(Roles="1, 3")]
         [HttpGet]
         public async Task<ActionResult<List<CategoriaReceita>>> Get(){
@@ -40,7 +40,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Busca uma categoria pelo ID
         /// </summary>
-        /// <returns>Retorna uma categoria valida</returns>
+        /// <returns>Retorna uma categoria válida</returns>
         [Authorize(Roles="1, 3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaReceita>> Get(int id){
@@ -58,9 +58,9 @@ namespace Backend.Controllers
 
         // POST api/CategoriaReceita
         /// <summary>
-        ///Atualiza uma categoria definida pelo usuario
+        ///Cria uma categoria definida pelo usuário administrador
         /// </summary>
-        /// <returns>Envia para o banco, a categoria criada</returns>
+        /// <returns>Envia para o banco a categoria criada</returns>
         [Authorize(Roles="1")]
         [HttpPost]
         public async Task<ActionResult<CategoriaReceita>> Post(CategoriaReceita categoriaReceita){
@@ -77,6 +77,11 @@ namespace Backend.Controllers
 
             return categoriaReceita;
         }
+         // PUT api/CategoriaReceita
+        /// <summary>
+        ///Altera uma categoria definida pelo usuário administrador
+        /// </summary>
+        /// <returns>Envia para o banco a categoria alterada</returns>
         [Authorize(Roles="1")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, CategoriaReceita categoriaReceita){
@@ -112,15 +117,15 @@ namespace Backend.Controllers
 
         // DELETE api/categoriaReceita/id
         /// <summary>
-        /// Busca uma categoria valida para efetuar a exclusao
+        /// Deleta uma categoria de receitas
         /// </summary>
-        /// <returns>Atualiza no banco a modificacao da categoria</returns>
+        /// <returns>Deleta do banco uma categoria de receita</returns>
         [Authorize(Roles="1")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<CategoriaReceita>> Delete(int id){
             var categoriaReceita = await _repositorio.BuscarPorId(id);
             if(categoriaReceita == null){
-                 return NotFound(new {mensagem = "Nenhuma categoria encontrada para o ID informado verifique e tente novamente!"});
+                 return NotFound(new {mensagem = "Nenhuma categoria encontrada para o ID informado, verifique e tente novamente!"});
             }
             await _repositorio.Excluir(categoriaReceita);
             

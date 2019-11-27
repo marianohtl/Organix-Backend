@@ -20,9 +20,9 @@ namespace Backend.Controllers
         VerificaController _verificar = new VerificaController(); 
         // GET : api/Usuario
         /// <summary>
-        /// Consulta usuário
+        /// Consulta todos os usuários cadastrados
         /// </summary>
-        /// <returns>retorna valor se valido</returns>
+        /// <returns>Retorna uma lista </returns>
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get(){
 
@@ -35,9 +35,9 @@ namespace Backend.Controllers
 
         // GET : api/Usuario2
         /// <summary>
-        /// Consulta usuario pelo id
+        /// Consulta um usuário pelo id
         /// </summary>
-        /// <returns>retorna valor se valido</returns>
+        /// <returns>retorna a informação de um usuário cadastrado</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> Get(int id){
 
@@ -53,9 +53,9 @@ namespace Backend.Controllers
 
         // POST api/Usuario
         /// <summary>
-        /// Atualiza usuario
+        /// Cadastra a informação de um usuário
         /// </summary>
-        /// <returns>Atualiza no banco</returns>
+        /// <returns>Cadastra um novo usuário no banco</returns>
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario){
             try
@@ -99,9 +99,9 @@ namespace Backend.Controllers
         // }
         
         /// <summary>
-        /// Cadastra usuário
+        /// Atualiza as informações de um usuário existente
         /// </summary>
-        /// <returns>Envia para o banco</returns>
+        /// <returns>Atualiza informação cadastrada</returns>
         [HttpPut("{id}")]
        
         public async Task<ActionResult> Put(int id, Usuario usuario){
@@ -158,9 +158,9 @@ namespace Backend.Controllers
 
         // DELETE api/usuario/id
         /// <summary>
-        /// Deleta usuario
+        /// Deleta um usuário referenciado por id
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Deleta um usuário exitente no banco de dados</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Usuario>> Delete(int id){
             var usuario = await _repositorio.BuscarPorId(id);

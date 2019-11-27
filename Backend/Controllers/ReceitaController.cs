@@ -30,9 +30,9 @@ namespace Backend.Controllers
         // GET : api/Receita
           // GET : api/Receita
         /// <summary>
-        /// Consulta receita
+        /// Consulta uma lista de receita cadastradas
         /// </summary>
-        /// <returns>Retorna um valor valido</returns>
+        /// <returns>Retorna uma lista de receitas</returns>
         [HttpGet]
         public async Task<ActionResult<List<Receita>>> Get(){
 
@@ -51,7 +51,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Consulta receita baseado no ID
         /// </summary>
-        /// <returns>Retorna um valor valido</returns>
+        /// <returns>Retorna uma receita</returns>
    
         [HttpGet("{id}")]
         public async Task<ActionResult<Receita>> Get(int id){
@@ -68,9 +68,9 @@ namespace Backend.Controllers
         }
 
     /// <summary>
-    /// Consulta receita baseado no Nome
+    /// Consulta receita baseado por palavra ou letra
     /// </summary>
-    /// <returns>Retorna um valor valido</returns>    
+    /// <returns>Retorna a receita encontrada</returns>    
 
     [HttpGet ("FiltrarPorNome")]
         public async Task<ActionResult<List<Receita>>> GetFiltro (FiltroViewModel filtro) {
@@ -84,9 +84,9 @@ namespace Backend.Controllers
 
         // POST api/Receita
         /// <summary>
-        /// Atualiza receita
+        /// Cadastra uma nova receita no banco
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Receita cadastrada</returns>
         [HttpPost]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita){
              var arquivo = Request.Form.Files[0];
@@ -99,7 +99,7 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Cadastra receita
+        /// Altera uma receita
         /// </summary>
         /// <returns>Envia para o banco</returns>
         [HttpPut("{id}")]

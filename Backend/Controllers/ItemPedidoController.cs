@@ -20,9 +20,9 @@ namespace Backend.Controllers
 
         // GET : api/ItemPedido
         /// <summary>
-        /// Consulta o Itens dos pedidos
+        /// Consulta os Itens dos pedidos
         /// </summary>
-        /// <returns>Retornar os itens cadastrados nos pedidos</returns>
+        /// <returns>Retornar uma lista de itens cadastrados</returns>
         [HttpGet]
         public async Task<ActionResult<List<ItemPedido>>> Get(){
 
@@ -38,9 +38,9 @@ namespace Backend.Controllers
 
         // GET : api/ItemPedido2
         /// <summary>
-        /// Consulta o Itens dos pedidos pelo ID
+        /// Consulta os itens dos pedidos pelo ID
         /// </summary>
-        /// <returns>Retornar os itens cadastrados nos pedidos</returns>
+        /// <returns>Retorna o item referenciado pelo id</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemPedido>> Get(int id){
 
@@ -48,7 +48,7 @@ namespace Backend.Controllers
             var itemPedido = await _repositorio.BuscarPorId(id);
 
             if(itemPedido == null){
-                return NotFound(new{mensagem = "Não foi possível localizar o produto."});
+                return NotFound(new{mensagem = "Não foi possível localizar o item pedido."});
             }
 
             return itemPedido;
@@ -57,7 +57,7 @@ namespace Backend.Controllers
 
         // POST api/ItemPedido
         /// <summary>
-        /// Atualiza os itens do pedido
+        /// Cria um novo item do pedido
         /// </summary>
         /// <returns>Envia para o banco os itens cadastrados </returns>
         [HttpPost]
@@ -76,14 +76,14 @@ namespace Backend.Controllers
             return itemPedido;
         }
         /// <summary>
-        /// Cadastra os itens do pedido pelo ID
+        ///  Altera o item do pedido pelo ID
         /// </summary>
-        /// <returns>Envia para o banco os itens cadastrados</returns>
+        /// <returns>Envia para o banco o item alterado</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, ItemPedido itemPedido){
             // Se o id do objeto não existir, ele retorna erro 400
             if(id != itemPedido.IdItemPedido){
-                return BadRequest(new{mensagem = "Não foi possivel localizar o pedido."});
+                return BadRequest(new{mensagem = "Não foi possivel localizar o item pedido."});
             }
             
             
@@ -113,9 +113,9 @@ namespace Backend.Controllers
 
         // DELETE api/itemPedido/id
         /// <summary>
-        /// Deleta os itens do pedidos
+        /// Deleta o item do pedido cadastrado
         /// </summary>
-        /// <returns>Atualiza as informacoes no banco</returns>
+        /// <returns> Deleta um item cadastrado</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<ItemPedido>> Delete(int id){
             var itemPedido = await _repositorio.BuscarPorId(id);

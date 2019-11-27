@@ -20,7 +20,7 @@ namespace Backend.Controllers
 
         // GET : api/Telefone
         /// <summary>
-        /// Consulta telefone
+        /// Consulta os telefones cadastrados
         /// </summary>
         /// <returns>Retorna um valor valido</returns>
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Backend.Controllers
 
         // GET : api/Telefone2
         /// <summary>
-        /// Consulta telefone baseado no ID
+        /// Consulta os telefones baseado no ID cadastrasdo
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Retorna um valor valido</returns>
@@ -58,9 +58,9 @@ namespace Backend.Controllers
 
         // POST api/Telefone
         /// <summary>
-        /// Atualiza telefone
+        /// Cadastra um telefone  
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Cadastrar no banco</returns>
         [HttpPost]
         public async Task<ActionResult<Telefone>> Post(Telefone telefone){
 
@@ -77,9 +77,9 @@ namespace Backend.Controllers
             return telefone;
         }
         /// <summary>
-        /// Cadastra telefone
+        /// Atualiza um telefone
         /// </summary>
-        /// <returns>Envia para o banco</returns>
+        /// <returns>Atualiza um dado no banco</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Telefone telefone){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -114,9 +114,9 @@ namespace Backend.Controllers
 
         // DELETE api/telefone/id
         /// <summary>
-        /// Deleta telefone
+        /// Deleta telefone já cadastrado
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Deleta informação do banco</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Telefone>> Delete(int id){
             var telefone = await _repositorio.BuscarPorId(id);

@@ -20,9 +20,9 @@ namespace Backend.Controllers
 
         // GET : api/Pedido
         /// <summary>
-        /// Consulta pedido
+        /// Consulta uma lista de pedidos
         /// </summary>
-        /// <returns>Retorna um pedido valido</returns>
+        /// <returns>Retorna uma lista de pedidos </returns>
         [HttpGet]
         public async Task<ActionResult<List<Pedido>>> Get(){
 
@@ -40,7 +40,7 @@ namespace Backend.Controllers
         /// <summary>
         /// Consulta pedido baseado no ID
         /// </summary>
-        /// <returns>Retorna um pedido valido</returns>
+        /// <returns>Retorna um pedido </returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Pedido>> Get(int id){
 
@@ -57,9 +57,9 @@ namespace Backend.Controllers
 
         // POST api/Pedido
         /// <summary>
-        /// Atualiza pedido
+        /// Cadastra um novo pedido
         /// </summary>
-        /// <returns>Envia para o banco</returns>
+        /// <returns>Cadastra um pedido</returns>
         [HttpPost]
         public async Task<ActionResult<Pedido>> Post(Pedido pedido){
 
@@ -76,9 +76,9 @@ namespace Backend.Controllers
             return pedido;
         }
         /// <summary>
-        /// Cadastra pedido baseado no ID
+        /// Altera um pedido baseado no ID
         /// </summary>
-        /// <returns>Envia para o banco</returns>
+        /// <returns>Envia para o banco o pedido alterado</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Pedido pedido){
             // Se o id do objeto não existir, ele retorna erro 400

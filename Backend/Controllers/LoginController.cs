@@ -75,9 +75,9 @@ namespace Backend.Controllers
         
         
         /// <summary>
-        /// Consulta os valores do login
+        /// Verifica se usuário está na base de dados e gera o Token de acesso
         /// </summary>
-        /// <returns>Retorna se o login e valido</returns>
+        /// <returns>Retorna o Token Válido</returns>
         [HttpPost]  
         public IActionResult Login([FromBody]LoginViewModel login)  
         {  

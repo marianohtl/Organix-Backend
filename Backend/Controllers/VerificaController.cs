@@ -2,6 +2,12 @@ namespace Backend.Controllers
 {
     public class VerificaController
     {
+        
+            /// <summary>
+            ///  Método que verifica se é válido o cnpf inserido, antes da finalização do cadastro
+            /// </summary>
+            /// <param name="cnpj"></param>
+            /// <returns>Retorna true ou false</returns>        
              public bool ValidaCNPJ(string cnpj){
 
             bool resultado=false;
@@ -62,7 +68,11 @@ namespace Backend.Controllers
 
             return resultado;
         }
-
+        /// <summary>
+        ///  Método que verifica se é válido o cpf inserido, antes da finalização do cadastro
+        /// </summary>
+        /// <param name="cpfUsuario"></param>
+        /// <returns>Retorna true ou false  </returns>
           public bool ValidaCPF(string cpfUsuario){
 
             bool resultado = false;
