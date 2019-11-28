@@ -20,9 +20,9 @@ namespace Backend.Controllers
 
         // GET : api/Tipo
         /// <summary>
-        /// Consulta o tipo
+        /// Consulta o tipo do usuário
         /// </summary>
-        /// <returns>Retorna um valor se valido</returns>
+        /// <returns>Retorna um valor válido</returns>
         [HttpGet]
         public async Task<ActionResult<List<Tipo>>> Get(){
 
@@ -38,10 +38,10 @@ namespace Backend.Controllers
 
         // GET : api/Tipo2
         /// <summary>
-        /// Consulta tipo baseado no ID
+        /// Consulta um tipo de usuário baseado no ID
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Retorna um valor se valido</returns>
+        /// <returns>Retorna um tipo tipo de usuário se for válido</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Tipo>> Get(int id){
 
@@ -58,9 +58,9 @@ namespace Backend.Controllers
 
         // POST api/Tipo
         /// <summary>
-        /// Atualiza tipo
+        /// Cadastra um tipo de usuário 
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Insere no banco um tipo de usuário</returns>
         [HttpPost]
         public async Task<ActionResult<Tipo>> Post(Tipo tipo){
 
@@ -77,9 +77,9 @@ namespace Backend.Controllers
             return tipo;
         }
         /// <summary>
-        /// Cadastra o tipo
+        /// Atualiza o tipo de usuário que já está cadastrado
         /// </summary>
-        /// <returns>Envia para o banco</returns>
+        /// <returns>Atualiza no banco o tipo de usuário</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Tipo tipo){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -114,7 +114,7 @@ namespace Backend.Controllers
 
         // DELETE api/tipo/id
         /// <summary>
-        /// Deleta o tipo
+        /// Deleta o tipo de usuário já cadastrado no banco 
         /// </summary>
         /// <returns>Atualiza o banco</returns>
         [HttpDelete("{id}")]

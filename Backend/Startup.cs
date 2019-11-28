@@ -48,10 +48,6 @@ namespace Backend
             services.AddCors(options =>{
                 options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
-            
-
-
-
               // JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  
             .AddJwtBearer(options =>  
@@ -89,6 +85,7 @@ namespace Backend
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
+
             // app.UseHttpsRedirection();
 
             app.UseRouting();

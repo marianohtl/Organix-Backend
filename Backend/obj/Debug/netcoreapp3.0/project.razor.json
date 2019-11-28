@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "FilePath": "c:\\Users\\maria\\Documents\\BackendOrganix-master\\Organix-Backend\\Backend\\Backend.csproj",
+=======
+  "FilePath": "c:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\Backend.csproj",
+>>>>>>> 0abb62a851a82dd2a0c05ae6b571de065cc228bf
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",

@@ -22,9 +22,9 @@ namespace Backend.Controllers
 
         // GET : api/Endereco
         /// <summary>
-        /// Consulta um endereco no banco
+        /// Lista os enderecos cadastrados no banco
         /// </summary>
-        /// <returns>Retorna um valor baseado nos criterios</returns>
+        /// <returns>Retorna uma lista de endereços</returns>
         [HttpGet]
         public async Task<ActionResult<List<Endereco>>> Get(){
 
@@ -40,9 +40,9 @@ namespace Backend.Controllers
 
         // GET : api/Endereco2
         /// <summary>
-        /// Consulta um endereco no banco pelo ID
+        /// Consulta um endereço no banco pelo ID
         /// </summary>
-        /// <returns>Retorna um valor baseado nos criterios</returns>
+        /// <returns>Retorna um endereço cadastrado</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Endereco>> Get(int id){
 
@@ -61,9 +61,9 @@ namespace Backend.Controllers
 
         // POST api/Endereco
         /// <summary>
-        /// Atualiza o endereço solicitado pelo usuario
+        ///  Cria um novo endereço
         /// </summary>
-        /// <returns>Enviar para o banco, o endereco cadastrado</returns>
+        /// <returns>Enviar para o banco o endereço cadastrado</returns>
         [HttpPost]
         public async Task<ActionResult<Endereco>> Post(Endereco endereco){
 
@@ -80,9 +80,9 @@ namespace Backend.Controllers
             return endereco;
         }
         /// <summary>
-        /// Cadastra o endereço solicitado pelo usuario baseado pelo ID
+        /// Altera o endereço solicitado pelo usuário baseado pelo ID
         /// </summary>
-        /// <returns>Enviar para o banco, o endereco cadastrado</returns>
+        /// <returns>Altera o endereço no banco </returns>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Endereco endereco){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -115,9 +115,9 @@ namespace Backend.Controllers
 
         // DELETE api/endereco/id
         /// <summary>
-        /// Deleta um endereco baseado no ID
+        /// Deleta um endereço baseado no ID
         /// </summary>
-        /// <returns>Atualiza o banco</returns>
+        /// <returns>Deleta o endereço cadastrado</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Endereco>> Delete(int id){
             var endereco = await _repositorio.BuscarPorId(id);

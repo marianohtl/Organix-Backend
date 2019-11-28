@@ -21,9 +21,9 @@ namespace Backend.Controllers
 
         // GET : api/Oferta
         /// <summary>
-        /// Consulta as ofertas cadastradas
+        /// Filtra as ofertas pelos parâmetros solicitados
         /// </summary>
-        /// <returns>Retorna uma oferta valida</returns>
+        /// <returns>Retorna uma lista de ofertas</returns>
         [Authorize(Roles="1,3")]
         [HttpGet]
         public async Task<ActionResult<List<OfertaViewModel>>> Get(FiltroViewModel Dados){
@@ -32,7 +32,7 @@ namespace Backend.Controllers
             var ofertas = await _repositorio.Filtro(Dados);
 
             if(ofertas == null){
-                return NotFound(new {mensagem = "Nenhuma produto foi encontrado!"});
+                return NotFound(new {mensagem = "Nenhuma oferta foi encontrada!"});
 
             }
             return ofertas;
