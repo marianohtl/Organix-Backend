@@ -55,6 +55,7 @@ namespace Backend.Controllers
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
                 new Claim(ClaimTypes.Role,  userInfo.IdTipo.ToString()),
                 new Claim("Role",  userInfo.IdTipo.ToString()),
+                new Claim("IdUsuario",  userInfo.IdUsuario.ToString()),
                 new Claim(ClaimTypes.PrimarySid, userInfo.IdUsuario.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())  
             }; 
@@ -87,11 +88,11 @@ namespace Backend.Controllers
             if (user != null)  
             {  
                 var tokenString = GenerateJSONWebToken(user);  
-                response = Ok(new { token = tokenString });  
+                response = Ok(new { token = tokenString , });
             }  
   
             return response;  
         }
 
     }
-}
+}   

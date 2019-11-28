@@ -32,7 +32,8 @@ namespace Backend.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=LAB103401\\SQLEXPRESS; Database=Organix; User Id=sa; Password=132");
+                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Organix;Trusted_Connection=True;");
+                 
             }
         }
 
