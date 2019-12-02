@@ -61,7 +61,7 @@ namespace Backend.Controllers
             try
             {
                 // Tratamos contra ataques de SQL Injection
-                await _repositorio.Alterar(usuario);
+                // await _repositorio.Alterar(usuario);
 
                 usuario.CpfCnpj = usuario.CpfCnpj.Replace(".", "");
                 usuario.CpfCnpj = usuario.CpfCnpj.Replace("/", ""); 
