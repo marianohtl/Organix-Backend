@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -78,6 +79,17 @@ namespace Backend
             
             // Habilitamos efetivamente o Swagger em nossa aplicação.
             app.UseSwagger();
+            
+            //referente ao upload de arquivos
+            app.UseStaticFiles(); // For the wwwroot folder
+
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
+                    RequestPath = "/Arquivos"
+                });
+
             // método Configure  efetivamente ativa a autenticação:
             app.UseAuthentication();
             // Especificamos o endpoint da documentação

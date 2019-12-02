@@ -86,9 +86,10 @@ namespace Backend.Controllers
             var user = AuthenticateUser(login);  
   
             if (user != null)  
-            {  
+            { 
+        
                 var tokenString = GenerateJSONWebToken(user);  
-                response = Ok(new { token = tokenString , });
+                response = Ok(new { token = tokenString });
             }  
   
             return response;  

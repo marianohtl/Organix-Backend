@@ -92,7 +92,8 @@ namespace Backend.Controllers
              var arquivo = Request.Form.Files[0];
              receita.Imagem = _upRepositorio.Upload(arquivo,"Resources/Images");
             
-                receita.IdUsuario  = ValidarUser();
+                //PROBLEMA AQUI 
+                // receita.IdUsuario  = ValidarUser();
                 await _repositorio.Salvar(receita);
             
                 return receita;
