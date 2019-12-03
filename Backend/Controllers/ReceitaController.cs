@@ -106,13 +106,14 @@ namespace Backend.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromForm]Receita receita){
             // Se o id do objeto não existir, ele retorna erro 400
+
             if(id != receita.IdReceita){
                 return NotFound(new {mensagem = "Receita inexistente."});  
                
             }
             try
             {
-               var arquivo = Request.Form.Files[0];
+                var arquivo = Request.Form.Files[0];
                 receita.Imagem = _upRepositorio.Upload(arquivo,"Resources/Images");
                 await _repositorio.Alterar(receita);
             }

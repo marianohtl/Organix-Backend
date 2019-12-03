@@ -87,7 +87,7 @@ namespace Backend
                 {
                     FileProvider = new PhysicalFileProvider(
                         Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
-                    RequestPath = "/Arquivos"
+                    RequestPath = "/Resources"
                 });
 
             // método Configure  efetivamente ativa a autenticação:
