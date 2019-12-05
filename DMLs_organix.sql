@@ -28,6 +28,10 @@ insert into receita(id_usuario, id_categoria_receita, nome_receita, ingredientes
 (3, 2, 'Bolo de bolo', 'Bolos', '1 hora', '10', '...')
 
 
+ALTER TABLE receita ADD imagem VARCHAR(255)
+UPDATE receita SET imagem = 'imagem.jpg' WHERE id_receita > 0;
+
+
 select * from endereco;
 select * from receita;
 select * from usuario;
