@@ -45,7 +45,7 @@ namespace Backend.Repositories
         public async Task<List<Oferta>> Listar()
         {
             using(OrganixContext _contexto = new OrganixContext()){
-                var ofertas = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation).ToListAsync();
+                var ofertas = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation.Endereco).Include(o => o.IdUsuarioNavigation.Telefone).ToListAsync();
                 return await _contexto.Oferta.ToListAsync();
             }
         }
