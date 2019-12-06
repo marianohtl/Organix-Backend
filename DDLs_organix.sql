@@ -1,6 +1,11 @@
-Create dAtAbAsE Organix
+CREATE DATABASE Organix;
 
 use Organix
+
+create table tipo(
+	id_tipo int identity primary key,
+	perfil varchar(255) not null
+);
 
 create table usuario(
 	id_usuario int identity primary key,
@@ -32,12 +37,12 @@ create table pedido(
 	status_pedido varchar(255) not null,
 	id_usuario int foreign key references usuario(id_usuario)
 );
-create table item_pedido(
-	id_item_pedido int identity primary key,
-	quantidade varchar(255) not null,
-	id_pedido int foreign key references pedido(id_pedido),
-	id_oferta int foreign key references oferta(id_oferta)
+
+create table produto(
+	id_produto int identity primary key,
+	nome_produto varchar(255)
 );
+
 create table oferta(
 	id_oferta int identity primary key,
 	estado_produto varchar(255) not null,
@@ -47,6 +52,19 @@ create table oferta(
 	id_usuario int foreign key references usuario(id_usuario),
 	id_produto int foreign key references produto(id_produto)
 );
+
+create table item_pedido(
+	id_item_pedido int identity primary key,
+	quantidade varchar(255) not null,
+	id_pedido int foreign key references pedido(id_pedido),
+	id_oferta int foreign key references oferta(id_oferta)
+);
+
+create table categoria_receita(
+	id_categoria_receita int identity primary key,
+	nome_categoria varchar(255)
+);
+
 create table receita(
 	id_receita int identity primary key,
 	nome_receita varchar(255) not null,
@@ -56,16 +74,4 @@ create table receita(
 	modo_preparo text not null,
 	id_usuario int foreign key references usuario(id_usuario),
 	id_categoria_receita int foreign key references categoria_receita(id_categoria_receita)
-);
-create table categoria_receita(
-	id_categoria_receita int identity primary key,
-	nome_categoria varchar(255)
-);
-create table produto(
-	id_produto int identity primary key,
-	nome_produto varchar(255)
-);
-create table tipo(
-	id_tipo int identity primary key,
-	perfil varchar(255) not null
 );
