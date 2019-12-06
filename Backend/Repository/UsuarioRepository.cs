@@ -33,7 +33,7 @@ namespace Backend.Repositories
             using(OrganixContext _contexto = new OrganixContext()){
                 var user = await _contexto.Usuario.Include(u=> u.Receita).Include(u=> u.Oferta).Include(u=> u.Pedido).Include(u => u.Endereco).Include(u => u.Telefone).
             Include(u => u.IdTipoNavigation).FirstOrDefaultAsync(e => e.IdUsuario == id);
-                user.Email = null;
+                // user.Email = null;
                 user.Senha = null;
                 return user;
             }
