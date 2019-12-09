@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maria\\Desktop\\PROJETOFINAL\\Organix-Backend\\Backend\\Backend.csproj": {}
+    "C:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maria\\Desktop\\PROJETOFINAL\\Organix-Backend\\Backend\\Backend.csproj": {
+    "C:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maria\\Desktop\\PROJETOFINAL\\Organix-Backend\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\maria\\Desktop\\PROJETOFINAL\\Organix-Backend\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maria\\Desktop\\PROJETOFINAL\\Organix-Backend\\Backend\\obj\\",
+        "projectPath": "C:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fic\\Desktop\\Organix-Backend\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"

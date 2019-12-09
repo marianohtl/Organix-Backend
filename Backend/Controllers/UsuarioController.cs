@@ -117,7 +117,7 @@ namespace Backend.Controllers
                 if (usuario.CpfCnpj.Length == 14){
                     var confirmado = _verificar.ValidaCNPJ(usuario.CpfCnpj);
                     if(confirmado == true){
-                        await _repositorio.Salvar(usuario);
+                        await _repositorio.Alterar(usuario);
                     }else{
                         return BadRequest(new {mensagem = "Cnpj inválido!"});
                     }         
@@ -125,7 +125,7 @@ namespace Backend.Controllers
                 } else if(usuario.CpfCnpj.Length == 11){
                     var confirmado =  _verificar.ValidaCPF(usuario.CpfCnpj);
                     if(confirmado == true){
-                        await _repositorio.Salvar(usuario);
+                        await _repositorio.Alterar(usuario);
                     }else{
                         return BadRequest(new {mensagem = "Cpf inválido!"});
                     }      
@@ -149,8 +149,6 @@ namespace Backend.Controllers
 
                 throw;
                 }
-
-                
             }
             // NoContent = retorna 204, sem nada
             return NoContent();
