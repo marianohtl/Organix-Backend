@@ -92,7 +92,7 @@ namespace Backend
 
             // método Configure  efetivamente ativa a autenticação:
             app.UseAuthentication();
-            // Especificamos o endpoint da documentaçãocd   
+            // Especificamos o endpoint da documentação
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");

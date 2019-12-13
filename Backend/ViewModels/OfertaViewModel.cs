@@ -14,6 +14,13 @@ namespace Backend.ViewModels
         public string estado_produto {get;set;}
         public string nome_produto  {get;set;}
         public string imagem  {get;set;}
+        public string telefone  {get;set;}
+        public string celular  {get;set;}
+        public string rua  {get;set;}
+        public string bairro  {get;set;}
+        public string estado  {get;set;}
+        public string cidade  {get;set;}
+        public string CEP  {get;set;}
 
     }
 }

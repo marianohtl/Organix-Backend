@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
     // Definimos nossa rota do controller e dizemos que é um controller de API
-    [Authorize(Roles="1,2,3")]
+    // [Authorize(Roles="1,2,3")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoController : ControllerBase
@@ -27,7 +27,7 @@ namespace Backend.Controllers
         /// Consuta uma lista de produtos cadastrados
         /// </summary>
         /// <returns>Retorna uma lista de produtos</returns>
-        [Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> Get(){
 
@@ -46,7 +46,7 @@ namespace Backend.Controllers
         /// Consulta produto baseado no ID
         /// </summary>
         /// <returns>Retorna um produto </returns>
-        [Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> Get(int id){
 
@@ -65,7 +65,7 @@ namespace Backend.Controllers
         /// Cadastra um novo produto pelo usuário administrador
         /// </summary>
         /// <returns>Cadastra um novo produto</returns>
-        [Authorize(Roles="1")]
+        // [Authorize(Roles="1")]
         [HttpPost]
         public async Task<ActionResult<Produto>> Post([FromForm]Produto produto){
   
@@ -79,7 +79,7 @@ namespace Backend.Controllers
         /// Altera produto baseado no ID
         /// </summary>
         /// <returns>Envia alteração do produto no banco </returns>
-        [Authorize(Roles="1")]
+        // [Authorize(Roles="1")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id,[FromForm]Produto produto){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -116,7 +116,7 @@ namespace Backend.Controllers
         /// Deleta produto
         /// </summary>
         /// <returns>Deleta o produto no banco</returns>
-        [Authorize(Roles="1")]
+        // [Authorize(Roles="1")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Produto>> Delete(int id){
             var produto = await _repositorio.BuscarPorId(id);
@@ -124,8 +124,6 @@ namespace Backend.Controllers
                 return NotFound(new {mensagem = "Produto inexistente."});  
             }
             await _repositorio.Excluir(produto);
-            
-                   
             return produto;
         }
     }

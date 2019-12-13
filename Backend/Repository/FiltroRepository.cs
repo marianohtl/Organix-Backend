@@ -23,10 +23,10 @@ namespace Backend.Repository
             var menorPrecoQuery = new SqlParameter("@menorPreco",Dados.menorPreco);
             var maiorPrecoQuery = new SqlParameter("@maiorPreco",Dados.maiorPreco);
 
-               var lista = await _contexto.OfertaViewModel.FromSqlRaw("select usuario.id_usuario, endereco.regiao, oferta.id_produto, oferta.id_oferta, oferta.preco,oferta.data_fabricacao, oferta.data_vencimento, oferta.estado_produto, produto.nome_produto, produto.imagem from oferta inner join usuario on usuario.id_usuario = oferta.id_usuario inner join endereco on usuario.id_usuario = endereco.id_usuario inner join produto on produto.id_produto = oferta.id_oferta where oferta.id_produto= @produto and oferta.preco <= @maiorPreco and oferta.preco>= @menorPreco and endereco.regiao= @regiao",produtoQuery,menorPrecoQuery,maiorPrecoQuery,regiaoQuery).ToListAsync();
+            var lista = await _contexto.OfertaViewModel.FromSqlRaw("select usuario.id_usuario, endereco.regiao, telefone.telefone, telefone.celular, endereco.rua, endereco.bairro, endereco.cidade, endereco.CEP, endereco.estado, oferta.id_produto, oferta.id_oferta, oferta.preco,oferta.data_fabricacao, oferta.data_vencimento, oferta.estado_produto, produto.nome_produto, produto.imagem from oferta inner join usuario on usuario.id_usuario = oferta.id_usuario inner join endereco on usuario.id_usuario = endereco.id_usuario inner join telefone on usuario.id_usuario = telefone.id_usuario inner join produto on produto.id_produto = oferta.id_oferta where oferta.id_produto= @produto and oferta.preco <= @maiorPreco and oferta.preco>= @menorPreco and endereco.regiao= @regiao",produtoQuery,menorPrecoQuery,maiorPrecoQuery,regiaoQuery).ToListAsync();
 
-               return  lista;
-                }
+            return  lista;
+            }
         }
     }
 }

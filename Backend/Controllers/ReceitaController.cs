@@ -82,9 +82,6 @@ namespace Backend.Controllers
                 }
         }
 
-
- 
-
         // POST api/Receita
         /// <summary>
         /// Cadastra uma nova receita no banco

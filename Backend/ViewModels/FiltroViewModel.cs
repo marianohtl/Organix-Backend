@@ -11,6 +11,6 @@ namespace Backend.ViewModels
         public string produto{get;set;}
 
         public string Filtro { get; set; }   
-        
+    
     }
 }
