@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
     // Definimos nossa rota do controller e dizemos que é um controller de API
-    // [Authorize(Roles="1,3")]
+    [Authorize(Roles="1,3")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReceitaController : ControllerBase

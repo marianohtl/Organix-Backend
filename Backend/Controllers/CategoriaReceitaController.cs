@@ -22,7 +22,7 @@ namespace Backend.Controllers
         /// Busca todas as categorias de receitas cadastradas 
         /// </summary>
         /// <returns>Retorna uma lista de categorias de receitas</returns>
-        // [Authorize(Roles="1, 3")]
+        [Authorize(Roles="1, 3")]
         [HttpGet]
         public async Task<ActionResult<List<CategoriaReceita>>> Get(){
 
@@ -89,9 +89,6 @@ namespace Backend.Controllers
             if(id != categoriaReceita.IdCategoriaReceita){
                 return BadRequest(new{mensagem = "Categoria não existente"});
             }
-            
-            
-
             try
             {
 

@@ -21,6 +21,7 @@ namespace Backend.ViewModels
         public string estado  {get;set;}
         public string cidade  {get;set;}
         public string CEP  {get;set;}
+        public string nome {get;set;}
 
     }
 }
