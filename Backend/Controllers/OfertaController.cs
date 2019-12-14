@@ -28,7 +28,7 @@ namespace Backend.Controllers
         ///  Busca uma lista de ofertas cadastradas
         /// </summary>
         /// <returns>Retorna uma lista de ofertas</returns>
-        //[Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Oferta>>> Get(){
 
@@ -47,7 +47,7 @@ namespace Backend.Controllers
         /// Consulta uma oferta pelo ID
         /// </summary>
         /// <returns>Retorna uma oferta válida</returns>
-        //[Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Oferta>> Get(int id){
 

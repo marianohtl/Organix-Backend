@@ -25,7 +25,7 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de ofertas</returns>
         [Authorize(Roles="1,3")]
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult<List<OfertaViewModel>>> Get(FiltroViewModel Dados){
             
 

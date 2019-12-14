@@ -102,6 +102,7 @@ namespace Backend.Controllers
                 return receita;
         }
 
+        
         /// <summary>
         /// Altera uma receita
         /// </summary>
@@ -114,11 +115,25 @@ namespace Backend.Controllers
                 return NotFound(new {mensagem = "Receita inexistente."});  
                
             }
+
             try
             {
-                var arquivo = Request.Form.Files[0];
-                receita.Imagem = _upRepositorio.Upload(arquivo,"Resources/Images");
-                await _repositorio.Alterar(receita);
+
+                //alteração
+                if(Request.Form.Files.Count != 0){
+                    var imagem = Request.Form.Files[0];
+                    receita.Imagem = _upRepositorio.Upload(imagem,"Resources/Images");
+                    await _repositorio.Alterar(receita);
+
+                }else{
+                 Receita receitaCadastrada = await _repositorio.BuscarPorId(int.Parse(Request.Form["IdReceita"]));
+                 receita.Imagem = receitaCadastrada.Imagem;
+                 await _repositorio.Alterar(receita);
+                }
+
+                //var arquivo = Request.Form.Files[0];
+                //receita.Imagem = _upRepositorio.Upload(arquivo,"Resources/Images");
+                //await _repositorio.Alterar(receita);
             }
             catch (DbUpdateConcurrencyException)
             {

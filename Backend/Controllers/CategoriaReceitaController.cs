@@ -61,7 +61,7 @@ namespace Backend.Controllers
         ///Cria uma categoria definida pelo usuário administrador
         /// </summary>
         /// <returns>Envia para o banco a categoria criada</returns>
-        [Authorize(Roles="1")]
+        [Authorize(Roles="3")]
         [HttpPost]
         public async Task<ActionResult<CategoriaReceita>> Post(CategoriaReceita categoriaReceita){
 
@@ -82,7 +82,7 @@ namespace Backend.Controllers
         ///Altera uma categoria definida pelo usuário administrador
         /// </summary>
         /// <returns>Envia para o banco a categoria alterada</returns>
-        [Authorize(Roles="1")]
+        [Authorize(Roles="3")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, CategoriaReceita categoriaReceita){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -120,7 +120,7 @@ namespace Backend.Controllers
         /// Deleta uma categoria de receitas
         /// </summary>
         /// <returns>Deleta do banco uma categoria de receita</returns>
-        [Authorize(Roles="1")]
+        [Authorize(Roles="3")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<CategoriaReceita>> Delete(int id){
             var categoriaReceita = await _repositorio.BuscarPorId(id);

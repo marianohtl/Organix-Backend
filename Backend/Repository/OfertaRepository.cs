@@ -31,6 +31,14 @@ namespace Backend.Repositories
             }
         }
 
+        public async Task<List<Oferta>> BuscarPorIdUsuario(int id){
+            using(OrganixContext _contexto = new OrganixContext()){
+                var ofertas = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation).Where(o=> o.IdUsuario == id).ToListAsync();
+
+                return ofertas;
+            }
+        }
+
         public async Task<Oferta> Excluir(Oferta oferta)
         {
             using(OrganixContext _contexto = new OrganixContext()){
