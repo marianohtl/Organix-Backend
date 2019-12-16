@@ -23,13 +23,22 @@ namespace Backend.Repositories
         }
         
 
+        // public async Task<Oferta> BuscarPorId(int id)
+        // {
+        //     using(OrganixContext _contexto = new OrganixContext()){
+        //         var oferta = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation).FirstOrDefaultAsync(o=> o.IdOferta== id);
+        //         return await _contexto.Oferta.FindAsync(id);
+        //     }
+        // }
+
         public async Task<Oferta> BuscarPorId(int id)
         {
             using(OrganixContext _contexto = new OrganixContext()){
-                var oferta = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation).FirstOrDefaultAsync(o=> o.IdOferta== id);
+                var oferta = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation).Include(o => o.IdUsuarioNavigation.Endereco).Include(o => o.IdUsuarioNavigation.Telefone).FirstOrDefaultAsync(o=> o.IdOferta== id);
                 return await _contexto.Oferta.FindAsync(id);
             }
         }
+
 
         public async Task<List<Oferta>> BuscarPorIdUsuario(int id){
             using(OrganixContext _contexto = new OrganixContext()){
@@ -49,6 +58,14 @@ namespace Backend.Repositories
             }
         }
         
+
+        // public async Task<List<Oferta>> Listar()
+        // {
+        //     using(OrganixContext _contexto = new OrganixContext()){
+        //         var ofertas = await _contexto.Oferta.Include(o => o.IdProdutoNavigation).Include(o => o.IdUsuarioNavigation.Endereco).Include(o => o.IdUsuarioNavigation.Telefone).ToListAsync();
+        //         return await _contexto.Oferta.ToListAsync();
+        //     }
+        // }
 
         public async Task<List<Oferta>> Listar()
         {
