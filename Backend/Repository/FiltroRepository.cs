@@ -18,15 +18,15 @@ namespace Backend.Repository
            using(OrganixContext _contexto = new OrganixContext()){
 
             
-            var produtoQuery    = new SqlParameter("@produto",    Dados.produto);
-            var regiaoQuery     = new SqlParameter("@regiao",     Dados.regiao);
-            var menorPrecoQuery = new SqlParameter("@menorPreco", Dados.menorPreco);
-            var maiorPrecoQuery = new SqlParameter("@maiorPreco", Dados.maiorPreco);
+            var produtoQuery = new SqlParameter("@produto",Dados.produto);
+            var regiaoQuery = new SqlParameter("@regiao", Dados.regiao);
+            var menorPrecoQuery = new SqlParameter("@menorPreco",Dados.menorPreco);
+            var maiorPrecoQuery = new SqlParameter("@maiorPreco",Dados.maiorPreco);
 
-            var lista = await _contexto.OfertaViewModel.FromSqlRaw("SELECT usuario.id_usuario, usuario.nome, endereco.regiao, (SELECT TOP 1 telefone FROM telefone WHERE telefone.id_usuario = usuario.id_usuario ORDER BY id_telefone) AS telefone, (SELECT TOP 1 telefone FROM telefone WHERE telefone.id_usuario = usuario.id_usuario ORDER BY id_telefone DESC) AS celular, endereco.rua, endereco.bairro, endereco.cidade, endereco.CEP, endereco.estado, oferta.id_produto, oferta.id_oferta, oferta.preco,oferta.data_fabricacao, oferta.data_vencimento, oferta.estado_produto, produto.nome_produto, produto.imagem FROM oferta INNER JOIN usuario on usuario.id_usuario = oferta.id_usuario INNER JOIN endereco on usuario.id_usuario = endereco.id_usuario INNER JOIN produto on produto.id_produto = oferta.id_produto WHERE oferta.id_produto= @produto and oferta.preco >= @menorPreco and oferta.preco <= @maiorPreco and endereco.regiao= @regiao", produtoQuery,menorPrecoQuery,maiorPrecoQuery,regiaoQuery).ToListAsync();
+              var lista = await _contexto.OfertaViewModel.FromSqlRaw("SELECT usuario.id_usuario, usuario.nome, endereco.regiao, (SELECT TOP 1 telefone FROM telefone WHERE telefone.id_usuario = usuario.id_usuario ORDER BY id_telefone) AS telefone, (SELECT TOP 1 telefone FROM telefone WHERE telefone.id_usuario = usuario.id_usuario ORDER BY id_telefone DESC) AS celular, endereco.rua, endereco.bairro, endereco.cidade, endereco.CEP, endereco.estado, oferta.id_produto, oferta.id_oferta, oferta.preco,oferta.data_fabricacao, oferta.data_vencimento, oferta.estado_produto, produto.nome_produto, produto.imagem FROM oferta INNER JOIN usuario on usuario.id_usuario = oferta.id_usuario INNER JOIN endereco on usuario.id_usuario = endereco.id_usuario INNER JOIN produto on produto.id_produto = oferta.id_produto WHERE oferta.id_produto= @produto and oferta.preco >= @menorPreco and oferta.preco <= @maiorPreco and endereco.regiao= @regiao", produtoQuery,menorPrecoQuery,maiorPrecoQuery,regiaoQuery).ToListAsync();
 
-            return  lista;
-            }
+               return  lista;
+                }
         }
     }
 }

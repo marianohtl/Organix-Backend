@@ -89,6 +89,9 @@ namespace Backend.Controllers
             if(id != categoriaReceita.IdCategoriaReceita){
                 return BadRequest(new{mensagem = "Categoria não existente"});
             }
+            
+            
+
             try
             {
 

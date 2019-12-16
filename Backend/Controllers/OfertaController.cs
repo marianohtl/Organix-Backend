@@ -28,7 +28,7 @@ namespace Backend.Controllers
         ///  Busca uma lista de ofertas cadastradas
         /// </summary>
         /// <returns>Retorna uma lista de ofertas</returns>
-        // [Authorize(Roles="1,2,3")]
+        //[Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Oferta>>> Get(){
 
@@ -47,7 +47,7 @@ namespace Backend.Controllers
         /// Consulta uma oferta pelo ID
         /// </summary>
         /// <returns>Retorna uma oferta válida</returns>
-        // [Authorize(Roles="1,2,3")]
+        //[Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Oferta>> Get(int id){
 
@@ -62,13 +62,22 @@ namespace Backend.Controllers
 
         }
 
+        [HttpGet("idusuario/{id}")]
+        public async Task<ActionResult<List<Oferta>>> GetPorIdUsuario(int id){
+            var oferta = await _repositorio.BuscarPorIdUsuario(id);
+            if(oferta == null){
+                return NotFound(new {mensagem = "Nenhuma Oferta encontrada para esse Usuário"});
+            }
+
+            return oferta;
+        }
+
         // POST api/Oferta
         // POST api/Oferta
         ///<summary>
         ///Cria uma nova oferta
         ///</summary>
         ///<returns>Envia para o banco o valor cadastrado</returns>
-        // [Authorize(Roles="1,2,3")]
         [HttpPost]
         public async Task<ActionResult<Oferta>> Post(Oferta oferta){
 
@@ -88,7 +97,6 @@ namespace Backend.Controllers
         /// Altera uma oferta cadastrada baseado no ID
         /// </summary>
         /// <returns>Envia para o banco o valor alterado</returns>
-        // [Authorize(Roles="1,2,3")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Oferta oferta){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -124,7 +132,6 @@ namespace Backend.Controllers
         /// Deleta uma oferta
         /// </summary>
         /// <returns>Deleta uma oferta cadastrada</returns>
-        // [Authorize(Roles="1,2,3")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Oferta>> Delete(int id){
             var oferta = await _repositorio.BuscarPorId(id);

@@ -32,7 +32,7 @@ namespace Backend.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-SABLIF1\\SQLEXPRESS;Database=Organix; User=sa; Password=132;");
+                optionsBuilder.UseSqlServer("SERVER=DESKTOP-9J1BUVT\\SQLEXPRESS; Database=Organix; User Id=sa; Password=132");
                  
             }
         }

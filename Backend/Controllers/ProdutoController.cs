@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
     // Definimos nossa rota do controller e dizemos que é um controller de API
-    // [Authorize(Roles="1,2,3")]
+    [Authorize(Roles="1,2,3")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoController : ControllerBase
@@ -27,7 +27,7 @@ namespace Backend.Controllers
         /// Consuta uma lista de produtos cadastrados
         /// </summary>
         /// <returns>Retorna uma lista de produtos</returns>
-        // [Authorize(Roles="1,2,3")]
+        [Authorize(Roles="1,2,3")]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> Get(){
 
@@ -46,7 +46,7 @@ namespace Backend.Controllers
         /// Consulta produto baseado no ID
         /// </summary>
         /// <returns>Retorna um produto </returns>
-        // [Authorize(Roles="1,2,3")]
+        [Authorize(Roles="1,2,3")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> Get(int id){
 
@@ -65,7 +65,7 @@ namespace Backend.Controllers
         /// Cadastra um novo produto pelo usuário administrador
         /// </summary>
         /// <returns>Cadastra um novo produto</returns>
-        // [Authorize(Roles="3")]
+        [Authorize(Roles="3")]
         [HttpPost]
         public async Task<ActionResult<Produto>> Post([FromForm]Produto produto){
   
@@ -79,7 +79,38 @@ namespace Backend.Controllers
         /// Altera produto baseado no ID
         /// </summary>
         /// <returns>Envia alteração do produto no banco </returns>
-        // [Authorize(Roles="3")]
+        [Authorize(Roles="3")]
+        // [HttpPut("{id}")]
+        // public async Task<ActionResult> Put(int id,[FromForm]Produto produto){
+        //     // Se o id do objeto não existir, ele retorna erro 400
+        //     if(id != produto.IdProduto){
+        //         return NotFound(new {mensagem = "Não é possível alterar este produto."});
+        //     }
+           
+        //     try
+        //     {
+        //        var arquivo = Request.Form.Files[0];
+        //         produto.Imagem =  _upRepositorio.Upload(arquivo,"Resources/Images");
+        //         await _repositorio.Alterar(produto);
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         // Verificamos se o objeto inserido realmente existe no banco
+        //         var produto_valido = await _repositorio.BuscarPorId(id);
+
+        //         if(produto_valido == null){
+        //             return NotFound(new {mensagem = "Não é possível alterar este produto."});  
+        //         }else{
+
+        //         throw;
+        //         }
+
+                
+        //     }
+        //     // NoContent = retorna 204, sem nada
+        //     return NoContent();
+        // }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id,[FromForm]Produto produto){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -87,12 +118,24 @@ namespace Backend.Controllers
                 return NotFound(new {mensagem = "Não é possível alterar este produto."});
             }
            
+
+           
             try
             {
-               var arquivo = Request.Form.Files[0];
-                produto.Imagem =  _upRepositorio.Upload(arquivo,"Resources/Images");
-                await _repositorio.Alterar(produto);
+            
+                //alteração
+                if(Request.Form.Files.Count != 0){
+                    var arquivo = Request.Form.Files[0];
+                    produto.Imagem =  _upRepositorio.Upload(arquivo,"Resources/Images");
+                    await _repositorio.Alterar(produto);
+                }else{
+                    Produto produtoCadastrado = await _repositorio.BuscarPorId(int.Parse(Request.Form["IdProduto"]));
+                    produto.Imagem = produtoCadastrado.Imagem;
+                    await _repositorio.Alterar(produto);
+                }
+               
             }
+
             catch (DbUpdateConcurrencyException)
             {
                 // Verificamos se o objeto inserido realmente existe no banco
@@ -116,7 +159,7 @@ namespace Backend.Controllers
         /// Deleta produto
         /// </summary>
         /// <returns>Deleta o produto no banco</returns>
-        // [Authorize(Roles="3")]
+        [Authorize(Roles="3")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Produto>> Delete(int id){
             var produto = await _repositorio.BuscarPorId(id);
@@ -124,6 +167,8 @@ namespace Backend.Controllers
                 return NotFound(new {mensagem = "Produto inexistente."});  
             }
             await _repositorio.Excluir(produto);
+            
+                   
             return produto;
         }
     }
