@@ -8,7 +8,7 @@ namespace Backend.ViewModels
 
         public string maiorPreco {get;set;}
 
-        public string produto{get;set;}
+        public int produto{get;set;}
 
         public string Filtro { get; set; }   
     
