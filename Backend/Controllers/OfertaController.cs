@@ -68,7 +68,7 @@ namespace Backend.Controllers
         ///Cria uma nova oferta
         ///</summary>
         ///<returns>Envia para o banco o valor cadastrado</returns>
-        [Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpPost]
         public async Task<ActionResult<Oferta>> Post(Oferta oferta){
 
@@ -88,7 +88,7 @@ namespace Backend.Controllers
         /// Altera uma oferta cadastrada baseado no ID
         /// </summary>
         /// <returns>Envia para o banco o valor alterado</returns>
-        [Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Oferta oferta){
             // Se o id do objeto não existir, ele retorna erro 400
@@ -124,7 +124,7 @@ namespace Backend.Controllers
         /// Deleta uma oferta
         /// </summary>
         /// <returns>Deleta uma oferta cadastrada</returns>
-        [Authorize(Roles="1,2,3")]
+        // [Authorize(Roles="1,2,3")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Oferta>> Delete(int id){
             var oferta = await _repositorio.BuscarPorId(id);
