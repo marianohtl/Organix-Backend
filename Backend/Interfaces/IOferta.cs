@@ -15,5 +15,7 @@ namespace Backend.Interfaces
          Task<Oferta> Alterar(Oferta oferta);
 
          Task<Oferta> Excluir(Oferta oferta);
+
+         Task<List<Oferta>> BuscarPorIdUsuario(int id);
     }
 }

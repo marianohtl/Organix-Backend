@@ -72,5 +72,3 @@ namespace Backend.Repositories
         
     }
 }
-
-
